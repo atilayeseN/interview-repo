@@ -1,0 +1,89 @@
+#1
+
+Created on Sun May 10 01:05:15 2020
+
+@author: ati
+"""
+import pandas as pd
+
+
+data=pd.read_csv('sat.csv')
+
+print(len(data))
+
+#2
+
+Created on Sun May 10 01:05:15 2020
+
+@author: ati
+"""
+import pandas as pd
+
+
+data=pd.read_csv('sat.csv')
+
+df=pd.DataFrame(data,columns=['Number of Test Takers'])
+
+
+check=df['Number of Test Takers'].isnull().sum()
+
+print(check)
+
+#3
+
+Created on Sun May 10 01:05:15 2020
+
+@author: ati
+"""
+import pandas as pd
+
+
+
+data=pd.read_csv('sat.csv')
+
+totalmath=data['Mathematics Mean'].sum()
+totalwrite=data['Writing Mean'].sum()
+
+avgmath=totalmath/len(data)
+avgwrite=totalwrite/len(data)
+
+
+
+print(data[(data['Number of Test Takers'] >= avgmath)& (data['Writing Mean']>=avgwrite)])
+
+#4
+
+    Created on Sun May 10 01:05:15 2020
+
+@author: ati
+"""
+import pandas as pd
+
+
+
+data=pd.read_csv('sat.csv')
+df=pd.DataFrame(data)
+
+sortt=(df['Mathematics Mean']-df['Critical Reading Mean']).sort_values(ascending=False)
+print(data.iloc[sortt.index])
+
+#5
+
+#Acording to given values sort schools with use percantage values
+
+Created on Sun May 10 01:05:15 2020
+
+@author: ati
+"""
+import pandas as pd
+
+
+
+data=pd.read_csv('sat.csv')
+df=pd.DataFrame(data)
+
+avg=(df['Critical Reading Mean']+df['Mathematics Mean']+df['Writing Mean'])*df['Number of Test Takers']
+avgs=avg*100/avg.sum()
+p=avgs.sort_values(ascending=False)
+percentage='%'+p.astype(str)
+print(data.iloc[percentage.index],percentage)
